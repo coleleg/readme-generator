@@ -6,13 +6,29 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the title of this project? (Required)'
+        message: 'What is the title of this project? (Required)',
+        validate: titleInput => {
+            if (titleInput) {
+                return true;
+            }
+                else {
+                    console.log('Please enter a title for your project!')
+                    return false;
+                }
+        }
     },
     {
-        type: 'input',
-        name: 'username',
-        message: 'What is your GitHub Username?'
+        type: 'confirm',
+        name: 'confirmUsername',
+        message: 'Would you like to include your GitHub Username?',
+        default: true
     },
+            {
+                type: 'input',
+                name: 'username',
+                message: 'What is your GitHub Username?',
+                when: ({confirmUsername}) => confirmUsername
+            },
     {
         type: 'confirm',
         name: 'confirmEmail',
