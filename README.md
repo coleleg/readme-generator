@@ -1,4 +1,5 @@
   # Readme Generator
+  ![Screenshot (12)](https://user-images.githubusercontent.com/15861137/155098352-4410f770-b17c-469f-8a82-5529e85b8ee4.png)
 
   # Table of Contents
   * [Description](#description)
