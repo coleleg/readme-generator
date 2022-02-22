@@ -1,53 +1,78 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseBadge(license) {
+ 
+  if (license === 'Apache 2.0') {
+   return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+
+  }
+  if (license === 'Creative Commons') {
+   return '[![License](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)';
+  }
+  if (license === 'MIT') {
+    return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+  
+  }
+  if (license === 'There is No License for this Project') {
+    return '';
+  }
+
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license === 'There is No License for this Project') {
+    return '';
+  } 
+  else {
+    return `
+    ${license}`
+
+  }
+
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
   # ${data.title}
 
-  #Table of Contents
-  -[Description](#Description)
-  -[Installation](#Installation)
-  -[Usage](#Usage)
-  -[Licenses](#Licenses)
-  -[Contribution](#Contribution)
-  -[Guidelines](#Guidelines)
-  -[Testing](#Testing)
-  -[Username](#Username)
-  -[Email](#Email)
+  # Table of Contents
+  * [Description](#description)
+  
+  * [Installation](#installation)
+  
+  * [Usage](#usage)
+  
+  * [Licenses](#licenses)
+  
+  * [Questions](#questions)
 
-  ##Description
+
+  ## Description
   ${data.description}
 
-  ##Installation
+  ## Installation
   ${data.installation}
 
-  ##Usage
+  ## Usage
   ${data.usage}
 
-  ##Licenses
-  ${data.lincenses}
-
-  ##Contribution
+  ## Contribution
   ${data.contribution}
 
-  ##Testing
+  ## Testing
   ${data.testing}
 
-  ##Username
-  ${data.username}
+  ## License
+  ${renderLicenseBadge(data.license)}
+  ${renderLicenseSection(data.license)}
 
-  ##Email
+  ## Contact
+  [github.com/${data.username}](https://github.com/${data.username})
+  
   ${data.email}
 
   `;

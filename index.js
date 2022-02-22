@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const renderLicenseBadge = require('./utils/generateMarkdown');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
@@ -95,7 +96,13 @@ const questions = [
                 name: 'testing',
                 message: 'Enter testing instructions for this project:',
                 when: ({confirmTesting}) => confirmTesting
-            }
+            },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Select with license you are using for your project.',
+        choices: ['Apache 2.0', 'Creative Commons', 'MIT', 'There is No License for this Project']
+    }
 ];
 
 // TODO: Create a function to write README file
@@ -125,6 +132,7 @@ function init() {
 // Function call to initialize app
 init()
     .then(data => {
+        renderLicenseBadge(data);
         return generateMarkdown(data);
     })
     .then(readmeFile=> {
